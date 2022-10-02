@@ -10,11 +10,10 @@ for (let i = 0; i < 256; i++) {
 
 //When pointer hovers over a block, fill in with color black
 let colorBlack = document.querySelectorAll('#block');
-for (const color of colorBlack) {
+for (let color of colorBlack) {
     color.addEventListener('mouseover', () => {
         color.style.backgroundColor = 'black';
     });
 }
 
 //Clear button to remove all div element colors
-
