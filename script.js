@@ -1,5 +1,7 @@
 let gameBoard = document.querySelector('.gameBoard');
-let clear = document.querySelector('#clear');
+let block = document.querySelectorAll('#block');
+let clearBtn = document.querySelector('#clear');
+// let backgroundColor = document.querySelectorAll('#block');
 
 //16x16 board 
 for (let i = 0; i < 256; i++) {
@@ -17,3 +19,8 @@ for (let color of colorBlack) {
 }
 
 //Clear button to remove all div element colors
+clearBtn.addEventListener('click', clearColor);
+function clearColor() {
+    document.querySelectorAll('#block');
+    this.style.backgroundColor = '';
+}
