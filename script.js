@@ -19,8 +19,9 @@ for (let color of colorBlack) {
 }
 
 //Clear button to remove all div element colors
-clearBtn.addEventListener('click', clearColor);
-function clearColor() {
-    document.querySelectorAll('#block');
-    this.style.backgroundColor = '';
+let clearColor = document.querySelectorAll('#block');
+for (let color of clearColor) {
+    clearBtn.addEventListener('click', () => {
+        color.style.backgroundColor = '';
+    });
 }
