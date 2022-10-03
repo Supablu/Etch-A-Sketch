@@ -1,14 +1,22 @@
 let gameBoard = document.querySelector('.gameBoard');
 let block = document.querySelectorAll('#block');
 let clearBtn = document.querySelector('#clear');
-// let backgroundColor = document.querySelectorAll('#block');
+let value = 16; // For default 16x16 grid size
+let resize = document.querySelector('.resize');
 
-//16x16 board 
-for (let i = 0; i < 256; i++) {
+//Create grid
+for (let i = 0; i < value * value; i++) {
     const block = document.createElement('div');
     block.id = 'block';
     gameBoard.appendChild(block);
 }
+
+//Resize the grid
+resize.addEventListener('click', () => {
+    let value = prompt('Enter desired size: ');
+    console.log(value);
+})
+
 
 //When pointer hovers over a block, fill in with color black
 let colorBlack = document.querySelectorAll('#block');
