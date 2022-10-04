@@ -1,4 +1,6 @@
-let clearBtn = document.querySelector('.clear');
+let blackBtn = document.querySelector('#black');
+let eraseBtn = document.querySelector('#eraser');
+let resetBtn = document.querySelector('#reset');
 let resize = document.querySelector('.resize');
 let value = 16; // For default 16x16 grid size
 
@@ -9,12 +11,14 @@ function createGrid(size = value) {
     for (let i = 0; i < size * size; i++) {
         const block = document.createElement('div');
         block.className = 'block';
-        block.id = 'block';
         grid.appendChild(block);
     }
     grid.addEventListener("mouseover", colorBlack);
     resize.addEventListener("click", resizeGrid);
-    clearBtn.addEventListener("click", clearGrid);
+    resetBtn.addEventListener("click", clearGrid);
+    eraseBtn.addEventListener("mouseover", eraseColor);
+    blackBtn.addEventListener("click", blackPaint);
+
 }
 
 //Resize the grid
@@ -33,9 +37,28 @@ function colorBlack(e) {
 }
 
 //Clear background color from grid
-function clearGrid() {
+function clearGrid(size, newSize) {
     grid.innerHTML = '';
-    resizeGrid();
+    resize.removeEventListener("click", resizeGrid);
+    grid.removeEventListener("mouseover", colorBlack);
+    createGrid();
+}
+
+//Colors divs black after clicking 'Color Black'
+function blackPaint(e) {
+    grid.removeEventListener("mouseover", eraseColor);
+    grid.addEventListener("mouseover", (e) => {
+        e.target.style.backgroundColor = 'black';
+    })
+}
+
+//Colors over black divs with white to 'erase' it
+function eraseColor(e) {
+    grid.removeEventListener("mouseover", colorBlack);
+    grid.addEventListener("mouseover", (e) => {
+        e.target.style.backgroundColor = 'white';
+    })
 }
 
 createGrid();
+
