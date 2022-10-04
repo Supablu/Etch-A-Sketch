@@ -13,21 +13,22 @@ function createGrid(size = value) {
         block.className = 'block';
         grid.appendChild(block);
     }
+}
+
+function addListeners() {
     grid.addEventListener("mouseover", colorBlack);
     resize.addEventListener("click", resizeGrid);
     resetBtn.addEventListener("click", clearGrid);
-    eraseBtn.addEventListener("mouseover", eraseColor);
+    eraseBtn.addEventListener("click", eraseColor);
     blackBtn.addEventListener("click", blackPaint);
-
 }
 
 //Resize the grid
 function resizeGrid() {
     const newSize = parseInt(prompt("New Size: ", 16));
     grid.innerHTML = '';
-    resize.removeEventListener("click", resizeGrid);
-    grid.removeEventListener("mouseover", colorBlack);
     createGrid(newSize);
+    blackPaint();
 }
 
 //Fill in background color of black
@@ -36,29 +37,32 @@ function colorBlack(e) {
     e.target.style.backgroundColor = 'black';
 }
 
+//Fill in background color of white
+function colorWhite(e) {
+    if (e.target.className !== "block") return false;
+    e.target.style.backgroundColor = 'white';
+}
+
 //Clear background color from grid
 function clearGrid(size, newSize) {
     grid.innerHTML = '';
-    resize.removeEventListener("click", resizeGrid);
-    grid.removeEventListener("mouseover", colorBlack);
     createGrid();
+    blackPaint();
 }
 
 //Colors divs black after clicking 'Color Black'
 function blackPaint(e) {
-    grid.removeEventListener("mouseover", eraseColor);
-    grid.addEventListener("mouseover", (e) => {
-        e.target.style.backgroundColor = 'black';
-    })
+    grid.removeEventListener("mouseover", colorWhite);
+    grid.addEventListener("mouseover", colorBlack);
 }
 
 //Colors over black divs with white to 'erase' it
 function eraseColor(e) {
     grid.removeEventListener("mouseover", colorBlack);
-    grid.addEventListener("mouseover", (e) => {
-        e.target.style.backgroundColor = 'white';
-    })
+    grid.addEventListener("mouseover", colorWhite);
 }
 
 createGrid();
+addListeners();
+
 
