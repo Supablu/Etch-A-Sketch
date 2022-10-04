@@ -1,35 +1,41 @@
-let gameBoard = document.querySelector('.gameBoard');
-let block = document.querySelectorAll('#block');
-let clearBtn = document.querySelector('#clear');
-let value = 16; // For default 16x16 grid size
+let clearBtn = document.querySelector('.clear');
 let resize = document.querySelector('.resize');
+let value = 16; // For default 16x16 grid size
 
 //Create grid
-for (let i = 0; i < value * value; i++) {
-    const block = document.createElement('div');
-    block.id = 'block';
-    gameBoard.appendChild(block);
+function createGrid(size = value) {
+    grid.style["grid-template-rows"] = `repeat(${size}, 1fr)`;
+    grid.style["grid-template-columns"] = `repeat(${size}, 1fr)`;
+    for (let i = 0; i < size * size; i++) {
+        const block = document.createElement('div');
+        block.className = 'block';
+        block.id = 'block';
+        grid.appendChild(block);
+    }
+    grid.addEventListener("mouseover", colorBlack);
+    resize.addEventListener("click", resizeGrid);
+    clearBtn.addEventListener("click", clearGrid);
 }
 
 //Resize the grid
-resize.addEventListener('click', () => {
-    let value = prompt('Enter desired size: ');
-    console.log(value);
-})
-
-
-//When pointer hovers over a block, fill in with color black
-let colorBlack = document.querySelectorAll('#block');
-for (let color of colorBlack) {
-    color.addEventListener('mouseover', () => {
-        color.style.backgroundColor = 'black';
-    });
+function resizeGrid() {
+    const newSize = parseInt(prompt("New Size: ", 16));
+    grid.innerHTML = '';
+    resize.removeEventListener("click", resizeGrid);
+    grid.removeEventListener("mouseover", colorBlack);
+    createGrid(newSize);
 }
 
-//Clear button to remove all div element colors
-let clearColor = document.querySelectorAll('#block');
-for (let color of clearColor) {
-    clearBtn.addEventListener('click', () => {
-        color.style.backgroundColor = '';
-    });
+//Fill in background color of black
+function colorBlack(e) {
+    if (e.target.className !== "block") return false;
+    e.target.style.backgroundColor = 'black';
 }
+
+//Clear background color from grid
+function clearGrid() {
+    grid.innerHTML = '';
+    resizeGrid();
+}
+
+createGrid();
