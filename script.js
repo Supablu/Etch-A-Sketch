@@ -1,4 +1,5 @@
 let blackBtn = document.querySelector('#black');
+let rainbowBtn = document.querySelector('#rainbow');
 let eraseBtn = document.querySelector('#eraser');
 let resetBtn = document.querySelector('#reset');
 let resize = document.querySelector('.resize');
@@ -21,6 +22,7 @@ function addListeners() {
     resetBtn.addEventListener("click", clearGrid);
     eraseBtn.addEventListener("click", eraseColor);
     blackBtn.addEventListener("click", blackPaint);
+    rainbowBtn.addEventListener("click", rainbow);
 }
 
 //Resize the grid
@@ -43,6 +45,15 @@ function colorWhite(e) {
     e.target.style.backgroundColor = 'white';
 }
 
+//Fill in background color with randomly generated rgb
+function randomColor(e) {
+    if (e.target.className !== "block") return false;
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b}`
+}
+
 //Clear background color from grid
 function clearGrid(size, newSize) {
     grid.innerHTML = '';
@@ -54,6 +65,13 @@ function clearGrid(size, newSize) {
 function blackPaint(e) {
     grid.removeEventListener("mouseover", colorWhite);
     grid.addEventListener("mouseover", colorBlack);
+}
+
+//color with randomly generated color
+function rainbow(e) {
+    grid.removeEventListener("mouseover", colorWhite);
+    grid.removeEventListener("mouseover", colorBlack);
+    grid.addEventListener("mouseover", randomColor);
 }
 
 //Colors over black divs with white to 'erase' it
