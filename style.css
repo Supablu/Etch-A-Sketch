@@ -12,12 +12,22 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #0B1E26;
+    background-color: #111826;
 }
 
 header {
     padding: 0 0 60px 0;
     color: #F2DB66;
+    font-size: 45px;
+    text-shadow:
+        /* 0 0 7px #F2DB66,
+        0 0 10px #F2DB66, */
+        0 0 21px #F2DB66,
+        0 0 42px #F2DB66,
+        0 0 82px #F2DB66,
+        0 0 92px #F2DB66,
+        0 0 102px #F2DB66,
+        0 0 151px #F2DB66;
 }
 
 #actions {
@@ -26,14 +36,99 @@ header {
     justify-content: space-evenly;
 }
 
-button {}
+button {
+    border: none;
+    padding: 2px;
+    margin-bottom: 25px;
+    border: none;
+    background-color: #111826;
+    cursor: pointer;
+}
 
+.resize {
+    color: #5EE3F2;
+    text-shadow:
+        0 0 7px #5EE3F2,
+        0 0 10px #5EE3F2,
+        0 0 21px #5EE3F2,
+        0 0 42px #5EE3F2,
+        0 0 82px #5EE3F2,
+        0 0 92px #5EE3F2,
+        0 0 102px #5EE3F2,
+        0 0 151px #5EE3F2;
+}
+
+#reset {
+    color: #4BF2A4;
+    text-shadow:
+        0 0 7px #4BF2A4,
+        0 0 10px #4BF2A4,
+        0 0 21px #4BF2A4,
+        0 0 42px #4BF2A4,
+        0 0 82px #4BF2A4,
+        0 0 92px #4BF2A4,
+        0 0 102px #4BF2A4,
+        0 0 151px #4BF2A4;
+}
+
+#black {
+    color: #F2F0D5;
+    text-shadow:
+        0 0 7px #F2F0D5,
+        0 0 10px #F2F0D5,
+        0 0 21px #F2F0D5,
+        0 0 42px #F2F0D5,
+        0 0 82px #F2F0D5,
+        0 0 92px #F2F0D5,
+        0 0 102px #F2F0D5,
+        0 0 151px #F2F0D5;
+}
+
+#rainbow {
+    color: #F20505;
+    text-shadow:
+        0 0 7px #F20505,
+        0 0 10px #F20505,
+        0 0 21px #F20505,
+        0 0 42px #F20505,
+        0 0 82px #F20505,
+        0 0 92px #F20505,
+        0 0 102px #F20505,
+        0 0 151px #F20505;
+}
+
+#eraser {
+    color: #F24BE7;
+    text-shadow:
+        0 0 7px #E4C2F2,
+        0 0 10px #E4C2F2,
+        0 0 21px #E4C2F2,
+        0 0 42px #E4C2F2,
+        0 0 82px #E4C2F2,
+        0 0 92px #E4C2F2,
+        0 0 102px #E4C2F2,
+        0 0 151px #E4C2F2;
+}
 
 #grid {
     width: 40rem;
     height: 40rem;
-    border: 1px solid #333;
     display: grid;
     flex-wrap: grid;
     background-color: #F0F0F2;
+}
+
+footer {
+    margin-top: 35px;
+    font-size: 12px;
+    color: #F0F0F2;
+    text-shadow:
+        0 0 7px #F0F0F2,
+        0 0 10px #F0F0F2,
+        0 0 21px #F0F0F2,
+        0 0 42px #F0F0F2,
+        0 0 82px #F0F0F2,
+        0 0 92px #F0F0F2,
+        0 0 102px #F0F0F2,
+        0 0 151px #F0F0F2;
 }
